@@ -80,11 +80,13 @@ struct searchPathInfo {
 
 searchPathInfo::searchPathInfo(Path pathInfo, int xInfo, int yInfo) :path(pathInfo), x(xInfo), y(yInfo) {}
 
-void searchPath(int* maze[], int row, int line, Path path, int x = 0, int y = 0) {
+void searchPath(int* maze[], int row, int line) {
 	stack<searchPathInfo> searchPathStack;
+	Path path;
 	searchPathStack.push(searchPathInfo(path, 0, 0));
 	while (!searchPathStack.empty()) {
-		x = searchPathStack.top().x, y = searchPathStack.top().y, path = searchPathStack.top().path;
+		int x = searchPathStack.top().x, y = searchPathStack.top().y;
+		path = searchPathStack.top().path;
 		searchPathStack.pop();
 		if (x == row - 1 && y == line - 1) {
 			path.printPath();

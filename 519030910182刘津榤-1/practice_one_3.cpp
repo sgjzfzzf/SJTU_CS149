@@ -12,8 +12,8 @@ int sumOfFactorial(int k){
 
 int main(){
     int k;
-    cout << "请输入k的值:";
+    cout << "Please input the value of k:";
     cin >> k;
-    cout << "结果为:" << sumOfFactorial(k) <<endl;
+    cout << "the result is:" << sumOfFactorial(k) <<endl;
     return 0;
 }

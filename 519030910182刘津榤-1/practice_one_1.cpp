@@ -12,8 +12,12 @@ bool isPrime(int num){
 
 int main(){
     int num;
-    cout << "è¯·è¾“å…¥ä½ è¦æ£€éªŒçš„æ•°:";
+    cout << "Please input the number you want to check:";
     cin >> num;
     cout << isPrime(num) << endl;
     return 0;
 }
+
+/*
+·ÖÎö£º¸Ãº¯ÊıÔÚ×î»µµÄÇé¿öÏÂµÄÑ­»·´ÎÊıÎªint(sqrt(n))-2£¬ËùÒÔÊ±¼ä¸´ÔÓ¶ÈÎªO(k^1/2)
+*/

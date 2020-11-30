@@ -1,4 +1,5 @@
-﻿#include<iostream>
+﻿//第2、7题的实现，对BinarySearchTree的功能扩展
+#include<iostream>
 #include<vector>
 using namespace std;
 
@@ -25,17 +26,17 @@ public:
 	SET<KEY, OTHER>* find(const KEY& x)const;
 	void insert(const SET<KEY, OTHER>& x);
 	void remove(const KEY& x);
-	void deleteLarger(const KEY& x);
-	void deleteSmaller(const KEY& x);
-	void deleteRange(const KEY& x1, const KEY& x2);
-	SET<KEY, OTHER> searchiMax(int i);
+	void deleteLarger(const KEY& x);//删除大于指定值的元素
+	void deleteSmaller(const KEY& x);//删除小于指定值的元素
+	void deleteRange(const KEY& x1, const KEY& x2);//删除一定范围内的元素
+	SET<KEY, OTHER> searchiMax(int i);//搜索第i大的元素
 private:
 	void insert(const SET<KEY, OTHER>& x, BinaryNode*& t);
 	void remove(const KEY& x, BinaryNode*& t);
-	void deleteLarger(const KEY& x, BinaryNode* t);
-	void deleteSmaller(const KEY& x, BinaryNode* t);
-	void deleteRange(const KEY& x1, const KEY& x2, BinaryNode* t);
-	void preOrder(vector<SET<KEY,OTHER>>& sets, BinaryNode* t);
+	void deleteLarger(const KEY& x, BinaryNode* t);//deleteLarger实现部分
+	void deleteSmaller(const KEY& x, BinaryNode* t);//deleteSmaller实现部分
+	void deleteRange(const KEY& x1, const KEY& x2, BinaryNode* t);//deleteRange实现部分
+	void preOrder(vector<SET<KEY,OTHER>>& sets, BinaryNode* t);//前序遍历
 	SET<KEY, OTHER>* find(const KEY& x, BinaryNode* t)const;
 	void makeEmpty(BinaryNode* t);
 };
@@ -116,6 +117,7 @@ BinarySearchTree<KEY, OTHER>::~BinarySearchTree() {
 	makeEmpty(root);
 }
 
+//deleteLarger，deleteSmaller，deleteRange通过递归方式依次访问节点并删除不合适的节点
 template<class KEY, class OTHER>
 void BinarySearchTree<KEY, OTHER>::deleteLarger(const KEY& x){
 	deleteLarger(x, root);
@@ -131,6 +133,7 @@ void BinarySearchTree<KEY, OTHER>::deleteRange(const KEY& x1, const KEY& x2){
 	deleteRange(x1, x2, root);
 }
 
+//通过前序遍历访问二叉查找树，从而得到一个升序排列的vector，从而获得第i大的数
 template<class KEY, class OTHER>
 SET<KEY, OTHER> BinarySearchTree<KEY, OTHER>::searchiMax(int i){
 	vector<SET<KEY, OTHER>> sets;
